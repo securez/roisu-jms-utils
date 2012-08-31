@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project default="all" name="test" basedir=".">
+    
+    <property environment="env" />
+   
+    <path id="ant.tools.classpath" >
+        <pathelement location="C:/wls1211_dev/wlserver/server/lib/wlthint3client.jar" />
+        <pathelement location="target/roisu-jms-utils-0.0.1-SNAPSHOT.jar" />
+    </path>
+
+
+    <typedef resource="org/roisu/utils/rat.xml" classpathref="ant.tools.classpath" />
+    
+    <target name="all">
+        <echo>Publish messages</echo>
+        <echo>${toString:ant.tools.classpath}</echo>
+        <jmspublish initialContextFactory="weblogic.jndi.WLInitialContextFactory" providerURL="t3://localhost:7001" 
+                principal="weblogic" credential="weblogic0" jmsConnectionFactory="jms/TestDevQueueFactory" 
+                jmsDestination="jms/TestDevQueue" fileCharset="UTF-8" numThreads="1">
+            <fileset dir="xml">
+                <include name="**/*.xml" />
+            </fileset>
+        </jmspublish>
+    </target>
+</project>

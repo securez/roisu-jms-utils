@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messageSet xmlns="http://org.roisu/utils/jms2xml" name="testMessages">
+	<textMessage JMSPriority="6" JMSMessageID="testp6" JMSType="text">
+		<headerProperty name="" type="" value="" />
+		<text>Prueba ya desde Ant</text>
+	</textMessage>
+	<wlXmlMessage JMSPriority="7" JMSMessageID="testp7" JMSType="TRANSITION">
+		<text><![CDATA[<transitionMessage xmlns="http://vodafone.com/interpol/objects/transition" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vodafone.com/interpol/objects/transition src/resources/schemas/messageTransition.xsd ">
+  <groupId>1234</groupId>
+  <condition>condition</condition>
+  <timestamp>2001-12-31T12:00:00</timestamp>
+  <actionexec>
+    <param/>
+  </actionexec>
+</transitionMessage>]]></text>
+	</wlXmlMessage>
+</messageSet>
