@@ -1,0 +1,4 @@
+# TODO
+
+- Add option to send different types of messages.
+- Add option to send messages in parallel.

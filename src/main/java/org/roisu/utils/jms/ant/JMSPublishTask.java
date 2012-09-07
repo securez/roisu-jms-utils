@@ -62,6 +62,9 @@ public class JMSPublishTask extends Task {
 	/** The filesets. */
 	private List<FileSet> filesets = new ArrayList<FileSet>();
 	
+	/** The time to live */
+	private Long timeToLive;
+	
 	/**
 	 * Validate passed parameters.
 	 */
@@ -92,7 +95,9 @@ public class JMSPublishTask extends Task {
 		
 		try {
 	        QueuePublisher publisher = new QueuePublisher(jmsConnectionFactory, jmsDestination, props);
-	        
+	        if(this.timeToLive != null) {
+	        	publisher.getSender().setTimeToLive(this.timeToLive.longValue());
+	        }
 	       
 	        if(numThreads > 1) {
 	        	log("Starting pool with " + numThreads + " threads ...");
@@ -265,6 +270,11 @@ public class JMSPublishTask extends Task {
 	 */
 	public void setNumThreads(int  numThreads) {
     	this.numThreads = numThreads;
+    }
+	
+	
+	public void setTimeToLive(long timeToLive) {
+    	this.timeToLive = new Long(timeToLive);
     }
 
 }
